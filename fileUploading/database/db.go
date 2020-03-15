@@ -71,7 +71,7 @@ func Update(c *mongo.Collection, file string, id int) bool {
 
 //Findfromuserdb finds the required data
 func Findfromuserdb(usercollection *mongo.Collection, id int) bool {
-	filter := bson.D{primitive.E{Key: "ID", Value: id}}
+	filter := bson.D{primitive.E{Key: "id", Value: id}}
 	var result User
 
 	err := usercollection.FindOne(context.TODO(), filter).Decode(&result)

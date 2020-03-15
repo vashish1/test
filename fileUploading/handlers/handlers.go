@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"test/fileUploading/database"
@@ -16,10 +17,12 @@ var cl *mongo.Collection
 func ChangeProfileImage(w http.ResponseWriter, r *http.Request) {
 	 
 	cl,_:=database.Createdb()
+
 	//a function to change a profile image
 	vars := mux.Vars(r)
 	Id := vars["ID"]
-    userId,_:=strconv.Atoi(Id)
+	userId,_:=strconv.Atoi(Id)
+	fmt.Println(userId)
 	var user database.User
 
 	userData := database.Findfromuserdb(cl,userId)
